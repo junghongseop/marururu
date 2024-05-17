@@ -3,10 +3,17 @@ import { color } from '@maru/design-token';
 import { Row, Text } from '@maru/ui';
 import { flex } from '@maru/utils';
 import styled from 'styled-components';
+import { ROUTES } from '@/constants/common/constant';
+import { useRouter } from 'next/navigation';
 
 const ApplicationBox = () => {
+  const router = useRouter();
+  const handleFairBoxClick = () => {
+    router.push(ROUTES.FAIR);
+  };
+
   return (
-    <StyledApplicationBox onClick={() => alert('준비 중입니다.')}>
+    <StyledApplicationBox onClick={handleFairBoxClick}>
       <Row gap={8} alignItems="center">
         <Text fontType="H3" color={color.gray900}>
           입학전형 설명회 신청
