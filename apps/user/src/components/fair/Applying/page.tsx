@@ -8,7 +8,7 @@ import TeacherItem from '../ApplyingItem/TeacherItem';
 const ApplyingPage = () => {
   return (
     <StyledApplyingPage>
-      <Column>
+      <Column gap={10}>
         <Text fontType="H3" color={color.gray900} textAlign="left">
           학생
         </Text>
@@ -31,6 +31,6 @@ const StyledApplyingPage = styled.div`
 
 const Separator = styled.p`
   border: 1px solid ${color.gray400};
-  margin: 2% 0;
+  margin: 1% 0;
   width: 90%;
 `;
