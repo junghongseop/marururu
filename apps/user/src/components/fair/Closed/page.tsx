@@ -2,22 +2,22 @@ import { Column } from '@maru/ui';
 import { styled } from 'styled-components';
 import { color } from '@maru/design-token';
 import { Text } from '@maru/ui';
-import StudentItem from '../ClosedItem/StudentItem';
-import TeacherItem from '../ClosedItem/TeacherItem';
+import StudentClosedFairList from '../FairList/StudentClosedFairList';
+import TeacherClosedFairList from '../FairList/TeacherClosedFairList';
 
 const ClosedPage = () => {
   return (
     <StyledClosedPage>
-      <Column>
+      <Column gap={10}>
         <Text fontType="H3" color={color.gray900} textAlign="left">
           학생
         </Text>
-        <StudentItem />
+        <StudentClosedFairList fairType="STUDENT_AND_PARENT" />
         <Separator />
         <Text fontType="H3" color={color.gray900} textAlign="left">
           교사
         </Text>
-        <TeacherItem />
+        <TeacherClosedFairList fairType="TEACHER" />
       </Column>
     </StyledClosedPage>
   );
@@ -31,6 +31,6 @@ const StyledClosedPage = styled.div`
 
 const Separator = styled.p`
   border: 1px solid ${color.gray400};
-  margin: 2% 0;
+  margin: 1% 0;
   width: 90%;
 `;

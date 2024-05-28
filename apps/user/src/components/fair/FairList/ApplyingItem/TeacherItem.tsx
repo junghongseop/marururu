@@ -1,31 +1,46 @@
 import { color } from '@maru/design-token';
 import { Column, Row, Text } from '@maru/ui';
 import { styled } from 'styled-components';
-import { flex } from '@maru/utils';
+import { flex, formatApplicationAt } from '@maru/utils';
 
-const StudentItem = () => {
+interface Props {
+  start: string;
+  place: string;
+  applicationStartDate: string;
+  applicationEndDate: string;
+  status: string;
+}
+
+const TeacherItem = ({
+  start,
+  place,
+  applicationEndDate,
+  applicationStartDate,
+  status,
+}: Props) => {
   return (
     <StyledStudentApplyingBox>
       <Column gap={24}>
         <Row alignItems="center" gap={90}>
-          <Text fontType="H4">9월 16일(토) 11:00</Text>
+          <Text fontType="H4">{start}</Text>
           <StyledApplyingStatus>
             <Text fontType="context" color={color.maruDefault}>
-              신청 가능
+              {status}
             </Text>
           </StyledApplyingStatus>
         </Row>
         <Text fontType="p2" color={color.gray500}>
-          장소: 본교 SRC관 1층
+          장소: {place}
           <br />
-          신청 기한: 2023.09.01 ~ 2023.09.13
+          신청 기한: {formatApplicationAt(applicationStartDate)} ~{' '}
+          {formatApplicationAt(applicationEndDate)}
         </Text>
       </Column>
     </StyledStudentApplyingBox>
   );
 };
 
-export default StudentItem;
+export default TeacherItem;
 
 const StyledStudentApplyingBox = styled.div`
   ${flex({ flexDirection: 'column', justifyContent: 'space-between' })}
