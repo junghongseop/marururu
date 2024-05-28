@@ -1,14 +1,16 @@
 import { color } from '@maru/design-token';
 import { Column, Row, Text } from '@maru/ui';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { flex, formatApplicationAt } from '@maru/utils';
+import { formatStartDate } from '@/utils';
+import { formatStatus } from '@/utils/formatStatus';
 
 interface Props {
   start: string;
   place: string;
   applicationStartDate: string;
   applicationEndDate: string;
-  status: string;
+  status: string | null;
 }
 
 const StudentItem = ({
@@ -22,10 +24,10 @@ const StudentItem = ({
     <StyledStudentApplyingBox>
       <Column gap={24}>
         <Row alignItems="center" gap={90}>
-          <Text fontType="H4">{start}</Text>
+          <Text fontType="H4">{formatStartDate(start)}</Text>
           <StyledApplyingStatus>
             <Text fontType="context" color={color.maruDefault}>
-              {status}
+              {formatStatus(status)}
             </Text>
           </StyledApplyingStatus>
         </Row>
@@ -46,7 +48,7 @@ const StyledStudentApplyingBox = styled.div`
   ${flex({ flexDirection: 'column', justifyContent: 'space-between' })}
   width: 400px;
   height: 160px;
-  padding: 25px 32px;
+  padding: 28px 32px;
   background-color: ${color.white};
   border: 1px solid ${color.gray200};
   border-radius: 12px;
