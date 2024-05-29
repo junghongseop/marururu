@@ -10,7 +10,7 @@ interface Props {
   place: string;
   applicationStartDate: string;
   applicationEndDate: string;
-  status: string;
+  status: string | null;
 }
 
 const TeacherItem = ({
@@ -20,14 +20,20 @@ const TeacherItem = ({
   applicationStartDate,
   status,
 }: Props) => {
+  const handleFormatStatus = formatStatus(status);
+
+  if (handleFormatStatus === '신청 가능' || handleFormatStatus === '신청 전') {
+    return null;
+  }
+
   return (
     <StyledStudentApplyingBox>
       <Column gap={24}>
         <Row alignItems="center" gap={90}>
           <Text fontType="H4">{formatStartDate(start)}</Text>
-          <StyledApplyingStatus>
+          <StyledApplyingStatus status={handleFormatStatus}>
             <Text fontType="context" color={color.red}>
-              {formatStatus(status)}
+              {handleFormatStatus}
             </Text>
           </StyledApplyingStatus>
         </Row>
@@ -55,7 +61,7 @@ const StyledStudentApplyingBox = styled.div`
   cursor: pointer;
 `;
 
-const StyledApplyingStatus = styled.div`
+const StyledApplyingStatus = styled.div<{ status: string }>`
   ${flex({ flexDirection: 'column', justifyContent: 'space-between' })}
   padding-top: 5px;
   width: 80px;

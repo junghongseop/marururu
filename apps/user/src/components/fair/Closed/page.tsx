@@ -32,5 +32,5 @@ const StyledClosedPage = styled.div`
 const Separator = styled.p`
   border: 1px solid ${color.gray400};
   margin: 1% 0;
-  width: 100%;
+  width: 800px;
 `;
