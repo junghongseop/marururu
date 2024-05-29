@@ -1,13 +1,13 @@
 import { useFairListQuery } from '@/services/fair/queries';
 import { flex } from '@maru/utils';
-import StudentItem from './ClosedItem/StudentItem';
+import StudentItem from './ApplyingItem/StudentItem';
 import styled from 'styled-components';
 
 interface Props {
   fairType: string;
 }
 
-const StudentClosedFairList = ({ fairType }: Props) => {
+const ApplyingFairList = ({ fairType }: Props) => {
   const { data: fairListData } = useFairListQuery(fairType);
 
   return fairListData ? (
@@ -28,7 +28,7 @@ const StudentClosedFairList = ({ fairType }: Props) => {
   ) : null;
 };
 
-export default StudentClosedFairList;
+export default ApplyingFairList;
 
 const StyledFairList = styled.div`
   ${flex({ flexDirection: 'column' })}

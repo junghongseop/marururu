@@ -2,8 +2,7 @@ import { Column } from '@maru/ui';
 import { styled } from 'styled-components';
 import { color } from '@maru/design-token';
 import { Text } from '@maru/ui';
-import StudentClosedFairList from '../FairList/StudentClosedFairList';
-import TeacherClosedFairList from '../FairList/TeacherClosedFairList';
+import ClosedFairList from '../FairList/ClosedFairList';
 
 const ClosedPage = () => {
   return (
@@ -12,12 +11,12 @@ const ClosedPage = () => {
         <Text fontType="H3" color={color.gray900} textAlign="left">
           학생
         </Text>
-        <StudentClosedFairList fairType="STUDENT_AND_PARENT" />
+        <ClosedFairList fairType="STUDENT_AND_PARENT" />
         <Separator />
         <Text fontType="H3" color={color.gray900} textAlign="left">
           교사
         </Text>
-        <TeacherClosedFairList fairType="TEACHER" />
+        <ClosedFairList fairType="TEACHER" />
       </Column>
     </StyledClosedPage>
   );
